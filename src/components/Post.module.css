@@ -124,3 +124,7 @@
 .commentForm button:hover {
   background: var(--green-light);
 }
+
+.commentList {
+  margin-top: 2rem;
+}
