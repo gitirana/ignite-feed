@@ -35,7 +35,7 @@ const posts = [
     author: {
       avatarUrl: "https://github.com/italoh623.png",
       name: "Ítalo Henrique",
-      role: "Data engineer",
+      role: "Data analyst jr",
     },
     content: [
       {
