@@ -24,7 +24,7 @@
   height: 3.5rem;
   border-radius: 8px;
   border: 4px solid var(--gray-800);
-  outline: 2px solid var(--green);
+  outline: 2px solid var(--green-500);
 }
 
 .profile strong {
@@ -47,8 +47,8 @@
 
 .button {
   background: transparent;
-  color: var(--green);
-  border: 1px solid var(--green);
+  color: var(--green-500);
+  border: 1px solid var(--green-500);
   border-radius: 8px;
   height: 50px;
   padding: 0 1.5rem;
@@ -64,6 +64,6 @@
 }
 
 .button:hover {
-  background-color: var(--green);
+  background-color: var(--green-500);
   color: var(--white);
 }
