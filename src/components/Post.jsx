@@ -9,6 +9,7 @@ import ptBR from "date-fns/locale/pt-BR";
 
 export function Post({ author, publishedAt, content }) {
   const [comments, setComments] = useState([]);
+  const [newCommentText, setNewCommentText] = useState("");
 
   const publishedDateFormatted = format(
     publishedAt,
@@ -17,8 +18,6 @@ export function Post({ author, publishedAt, content }) {
       locale: ptBR,
     }
   );
-
-  const [newCommentText, setNewCommentText] = useState(" ");
 
   const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
     locale: ptBR,
@@ -30,10 +29,11 @@ export function Post({ author, publishedAt, content }) {
 
     setComments([...comments, newCommentText]);
 
-    setNewCommentText(" ");
+    setNewCommentText("");
   }
 
   function handleNewCommentChange() {
+    event.target.setCustomValidity("");
     setNewCommentText(event.target.value);
   }
 
@@ -44,6 +44,12 @@ export function Post({ author, publishedAt, content }) {
 
     setComments(newCommentsList);
   }
+
+  function handleInvalidNewComment() {
+    event.target.setCustomValidity("Esse campo é obrigatório");
+  }
+
+  const isNewCommentEmpty = newCommentText.length === 0;
 
   return (
     <article className={styles.post}>
@@ -85,12 +91,16 @@ export function Post({ author, publishedAt, content }) {
         <textarea
           name="comment"
           placeholder="Deixe um comentário"
-          onChange={handleNewCommentChange}
           value={newCommentText}
+          onChange={handleNewCommentChange}
+          onInvalid={handleInvalidNewComment}
+          required
         />
 
         <footer>
-          <button type="submit">Publicar</button>
+          <button type="submit" disabled={isNewCommentEmpty}>
+            Publicar
+          </button>
         </footer>
       </form>
 
